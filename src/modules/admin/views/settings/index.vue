@@ -51,17 +51,17 @@ import 'vue3-toastify/dist/index.css';
 const users = ref([])
 const itemsPerPage = ref(5)
 const headers = ref([
-        { title: '#', align: 'start', key: 'id'},
-        { title: 'nombre', align: 'start', key: 'name'},
-        { title: 'Calle', align: 'start', key: 'street' },
-        { title: 'Numero', align: 'start', key: 'number' },
-        { title: 'Colonia', align: 'start', key: 'colony' },
-        { title: 'Ciudad', align: 'start', key: 'city' },
-        { title: 'Estado', align: 'start', key: 'state' },
-        { title: 'Pais', align: 'start', key: 'country' },
-        { title: 'Codigo postal', align: 'start', key: 'zip' },
-        { title: 'Imagen', align: 'start', key: 'logo' },
-        { title: 'acciones', align: 'start', key: 'acciones' },
+        { text: '#', align: 'start', value: 'id'},
+        { text: 'nombre', align: 'start', value: 'name'},
+        { text: 'Calle', align: 'start', value: 'street' },
+        { text: 'Numero', align: 'start', value: 'number' },
+        { text: 'Colonia', align: 'start', value: 'colony' },
+        { text: 'Ciudad', align: 'start', value: 'city' },
+        { text: 'Estado', align: 'start', value: 'state' },
+        { text: 'Pais', align: 'start', value: 'country' },
+        { text: 'Codigo postal', align: 'start', value: 'zip' },
+        { text: 'Imagen', align: 'start', value: 'logo' },
+        { text: 'acciones', align: 'start', value: 'acciones' },
        
     ])
 

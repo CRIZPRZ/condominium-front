@@ -52,11 +52,11 @@ import 'vue3-toastify/dist/index.css';
 const users = ref([])
 const itemsPerPage = ref(5)
 const headers = ref([
-        { title: '#', align: 'start', key: 'id'},
-        { title: 'nombre', align: 'start', key: 'name'},
-        { title: 'Correo', align: 'start', key: 'email' },
-        { title: 'Telefonos', align: 'start', key: 'phone' },
-        { title: 'acciones', align: 'start', key: 'acciones' },
+        { text: '#', align: 'start', value: 'id'},
+        { text: 'nombre', align: 'start', value: 'name'},
+        { text: 'Correo', align: 'start', value: 'email' },
+        { text: 'Telefonos', align: 'start', value: 'phone' },
+        { text: 'acciones', align: 'start', value: 'acciones' },
        
     ])
 

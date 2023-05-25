@@ -2,7 +2,7 @@
 
  
     <div class="flex justify-end my-4">
-        <div class="cursor-pointer" @click="createCharge"><v-icon name="fa-plus" /> nuevo</div>
+        <div class="cursor-pointer" @click="npm "><v-icon name="fa-plus" /> nuevo</div>
     </div>
     <v-data-table
         v-model:items-per-page="itemsPerPage"
@@ -67,18 +67,18 @@ const store = useChargesStore()
 const storePayment = useAbonosStore()
 const itemsPerPage = ref(5)
 const headers = ref([
-        { title: '#', align: 'start', key: 'id'},
-        { title: 'Fecha', align: 'start', key: 'date' },
-        { title: 'Descripcion', align: 'start', key: 'description' },
-        { title: 'Monto', align: 'start', key: 'amount' },
-        { title: 'Pagado', align: 'start', key: 'paymentsTotal' },
-        { title: 'Estado', align: 'start', key: 'status' },
-        { title: 'acciones', align: 'start', key: 'acciones' },
+        { text: '#', align: 'start', value: 'id'},
+        { text: 'Fecha', align: 'start', value: 'date' },
+        { text: 'Descripcion', align: 'start', value: 'description' },
+        { text: 'Monto', align: 'start', value: 'amount' },
+        { text: 'Pagado', align: 'start', value: 'paymentsTotal' },
+        { text: 'Estado', align: 'start', value: 'status' },
+        { text: 'acciones', align: 'start', value: 'acciones' },
        
     ])
 
 
-const createCharge = () => {
+const npm  = () => {
     store.charge.property_id = props.id,
     store.showModal = true
 }

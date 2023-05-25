@@ -53,10 +53,10 @@ const props = defineProps(['id'])
  
 const itemsPerPage = ref(5)
 const headers = ref([
-        { title: '#', align: 'start', key: 'id'},
-        { title: 'Propiedad', align: 'start', key: 'property' },
-        { title: 'Puede Votar', align: 'start', key: 'can_vote' },
-        { title: 'acciones', align: 'start', key: 'acciones' },
+        { text: '#', align: 'start', value: 'id'},
+        { text: 'Propiedad', align: 'start', value: 'property' },
+        { text: 'Puede Votar', align: 'start', value: 'can_vote' },
+        { text: 'acciones', align: 'start', value: 'acciones' },
        
     ])
  

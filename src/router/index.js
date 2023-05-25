@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
  
 import AdminRouter from '@/modules/admin/router'
 import isAuthenticatedGuard from '@/modules/admin/router/authMiddleware' 
-
+ 
  
 const routes = [
   {

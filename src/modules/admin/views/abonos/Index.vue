@@ -51,12 +51,12 @@ const props = defineProps(['id'])
 const store = useAbonosStore()
 const itemsPerPage = ref(50)
 const headers = ref([
-        { title: '#', align: 'start', key: 'id'},
-        { title: 'Fecha', align: 'start', key: 'date' },
-        { title: 'Descripcion', align: 'start', key: 'description' },
-        { title: 'Monto', align: 'start', key: 'amount' },
-        { title: 'Cargo', align: 'start', key: 'cargo' },
-        { title: 'acciones', align: 'start', key: 'acciones' },
+        { text: '#', align: 'start', value: 'id'},
+        { text: 'Fecha', align: 'start', value: 'date' },
+        { text: 'Descripcion', align: 'start', value: 'description' },
+        { text: 'Monto', align: 'start', value: 'amount' },
+        { text: 'Cargo', align: 'start', value: 'cargo' },
+        { text: 'acciones', align: 'start', value: 'acciones' },
        
     ])
 
