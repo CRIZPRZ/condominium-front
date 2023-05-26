@@ -2,7 +2,7 @@
 
  
     <div class="flex justify-end my-4">
-        <div class="cursor-pointer" @click="npm "><v-icon name="fa-plus" /> nuevo</div>
+        <div class="cursor-pointer" @click="createCharge "><v-icon name="fa-plus" /> nuevo</div>
     </div>
     <v-data-table
         v-model:items-per-page="itemsPerPage"
@@ -56,7 +56,7 @@ import condominiumApi from '@/api/CondominiumApi';
 import { useChargesStore } from './store/Charges'
 import { usePaymentsStore } from '../payments/store/Payments'
 import Create from './form.vue'
-import Payment from '../charges/form.vue'
+import Payment from '../payments/form.vue'
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { toast } from 'vue3-toastify';
@@ -78,15 +78,15 @@ const headers = ref([
     ])
 
 
-const npm  = () => {
+const createCharge  = () => {
     store.charge.property_id = props.id,
     store.showModal = true
 }
 
 const addPayment = (id) => {
     storePayment.showModal = true
-    storePayment.abono.charge_id = id
-    storePayment.abono.property_id = props.id    // store.showModal = true
+    storePayment.payment.charge_id = id
+    storePayment.payment.property_id = props.id    // store.showModal = true
 }
 
 

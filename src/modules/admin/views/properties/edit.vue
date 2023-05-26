@@ -111,13 +111,8 @@
 
 <script setup>
     import condominiumApi from '@/api/CondominiumApi'; 
-    import {
-        onMounted,
-        ref
-    } from 'vue';
-    import {
-        toast
-    } from 'vue3-toastify';
+    import {  onMounted, ref } from 'vue';
+    import { toast } from 'vue3-toastify';
     import Charges from '../charges/Index.vue'
     import Payments from '../payments/Index.vue'
     import 'vue3-toastify/dist/index.css';
@@ -173,11 +168,6 @@
 
 
             setTimeout(() => {
-
-                // router.push({
-                //     name: 'properties'
-                // })
-
                 loading.value = false
                 toast.success('Propiedad Actualizada con Exito !!', {
                     transition: toast.TRANSITIONS.ZOOM,

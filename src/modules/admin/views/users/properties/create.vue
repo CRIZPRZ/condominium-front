@@ -58,24 +58,16 @@
 <script setup>
 
 import condominiumApi from '@/api/CondominiumApi';
-import { useUserPropertiesStore } from './store/UserProperties';
-import router from '@/router';
-import { onMounted } from 'vue';
+import { useUserPropertiesStore } from './store/UserProperties'; 
 import { ref } from 'vue'; 
 import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-import { storeKey } from 'vuex';
-
+import 'vue3-toastify/dist/index.css'; 
 
 const store = useUserPropertiesStore()
-
 
 const loading = ref(false)
 const enableCanVote = ref(false)
 const errors = ref({}) 
- 
- 
-
 
 const checkCanVoteProperties = async () => {
     const {data: { data } } = await condominiumApi.get(`checkCanVoteProperties/${store.form.property_id}`)

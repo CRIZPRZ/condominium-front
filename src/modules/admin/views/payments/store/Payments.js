@@ -35,7 +35,7 @@ const getPayments = async id => {
         }
     })
 
-        payment.value = data
+    payments.value = data
 
 }
 
