@@ -54,9 +54,9 @@
 <script setup>
 import condominiumApi from '@/api/CondominiumApi';
 import { useChargesStore } from './store/Charges'
-import { useAbonosStore } from '../abonos/store/Abonos'
+import { usePaymentsStore } from '../payments/store/Payments'
 import Create from './form.vue'
-import Payment from '../abonos/form.vue'
+import Payment from '../charges/form.vue'
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { toast } from 'vue3-toastify';
@@ -64,16 +64,16 @@ import 'vue3-toastify/dist/index.css';
  
 const props = defineProps(['id'])
 const store = useChargesStore()
-const storePayment = useAbonosStore()
+const storePayment = usePaymentsStore()
 const itemsPerPage = ref(5)
 const headers = ref([
-        { text: '#', align: 'start', value: 'id'},
-        { text: 'Fecha', align: 'start', value: 'date' },
-        { text: 'Descripcion', align: 'start', value: 'description' },
-        { text: 'Monto', align: 'start', value: 'amount' },
-        { text: 'Pagado', align: 'start', value: 'paymentsTotal' },
-        { text: 'Estado', align: 'start', value: 'status' },
-        { text: 'acciones', align: 'start', value: 'acciones' },
+        { title: '#', align: 'start', key: 'id'},
+        { title: 'Fecha', align: 'start', key: 'date' },
+        { title: 'Descripcion', align: 'start', key: 'description' },
+        { title: 'Monto', align: 'start', key: 'amount' },
+        { title: 'Pagado', align: 'start', key: 'paymentsTotal' },
+        { title: 'Estado', align: 'start', key: 'status' },
+        { title: 'acciones', align: 'start', key: 'acciones' },
        
     ])
 

@@ -1,13 +1,9 @@
 <template>
-
-<!--  
-    <div class="flex justify-end my-4">
-        <div class="cursor-pointer" @click="createCharge"><v-icon name="fa-plus" /> nuevo</div>
-    </div> -->
+ 
     <v-data-table
         v-model:items-per-page="itemsPerPage"
         :headers="headers"
-        :items="store.abonos"
+        :items="store.payments"
         item-value="name"
         class="elevation-0"
     >
@@ -23,7 +19,7 @@
         <template v-slot:item.acciones="{ item }"> 
             <div class="flex space-x-3 items-center">
                 <div class="tooltip" data-tip="Eliminar">
-                    <v-icon name="fa-trash-alt" class="btn-actions" @click="deletePayment(item.value)" />
+                    <v-icon name="fa-trash-alt" class="btn-actions" @click="destroyPayment(item.value)" />
                 </div>
                 <!-- <div @click="editCharge(item.value)">                    
                         <v-icon name="fa-regular-edit" class="btn-actions" />
@@ -40,7 +36,7 @@
 
 <script setup>
 import condominiumApi from '@/api/CondominiumApi';
-import { useAbonosStore } from './store/Abonos'
+import { usePaymentsStore } from './store/Payments'
 import Create from './form.vue'
 import { ref } from 'vue';
 import { onMounted } from 'vue';
@@ -48,15 +44,15 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
  
 const props = defineProps(['id'])
-const store = useAbonosStore()
+const store = usePaymentsStore()
 const itemsPerPage = ref(50)
 const headers = ref([
-        { text: '#', align: 'start', value: 'id'},
-        { text: 'Fecha', align: 'start', value: 'date' },
-        { text: 'Descripcion', align: 'start', value: 'description' },
-        { text: 'Monto', align: 'start', value: 'amount' },
-        { text: 'Cargo', align: 'start', value: 'cargo' },
-        { text: 'acciones', align: 'start', value: 'acciones' },
+        { title: '#', align: 'start', key: 'id'},
+        { title: 'Fecha', align: 'start', key: 'date' },
+        { title: 'Descripcion', align: 'start', key: 'description' },
+        { title: 'Monto', align: 'start', key: 'amount' },
+        { title: 'Cargo', align: 'start', key: 'cargo' },
+        { title: 'acciones', align: 'start', key: 'acciones' },
        
     ])
 
@@ -67,30 +63,30 @@ const createCharge = () => {
 }
 
 
-const editCharge = (abono) => { 
+const editCharge = (payment) => { 
     store.action = 'update'
-    store.abono.property_id = props.id,
-    store.abono.id = abono.id
-    store.abono.amount = abono.amount
-    store.abono.date = abono.date
-    store.abono.description = abono.description
+    store.payment.property_id = props.id,
+    store.payment.id = payment.id
+    store.payment.amount = payment.amount
+    store.payment.date = payment.date
+    store.payment.description = payment.description
     store.showModal = true
 }
 
 
-const deletePayment = async payment => {
+const destroyPayment = async payment => {
  
     try {
         
         
-        await condominiumApi.delete(`abonos/${payment.id}` )
+        await condominiumApi.delete(`payments/${payment.id}` )
 
         toast.success('Pago eliminado con exito !!', {
             transition: toast.TRANSITIONS.ZOOM,
             position: toast.POSITION.BOTTOM_CENTER,
         });
 
-        store.getAbonos()
+        store.getPayments()
 
 
     } catch (error) {
@@ -128,6 +124,6 @@ const downloadPdf = async payment => {
     }
  
 onMounted( () => {
-    store.getAbonos(props.id)
+    store.getPayments(props.id)
 })
 </script>

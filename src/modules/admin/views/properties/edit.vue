@@ -92,18 +92,18 @@
         <div class="border rounded-md p-5 mt-11">
 
             <div class="flex">
-                <div class="flex-none" :class="tab === 'cargos' ? 'text-black border-b-0 border-2 border-red-500 ' : 'border-b-2 border-b-red-500'">
-                    <a class="tab" @click="tab = 'cargos'">Cargos</a>
+                <div class="flex-none" :class="tab === 'charges' ? 'text-black border-b-0 border-2 border-red-500 ' : 'border-b-2 border-b-red-500'">
+                    <a class="tab" @click="tab = 'charges'">Cargos</a>
                 </div>
                 <div class=""
-                    :class="tab === 'abonos' ? 'text-black border-b-0 border-2 border-red-500 flex-none' :  'flex-1  border-b-2 border-b-red-500'">
-                    <a class="tab" @click="tab = 'abonos'">Abonos</a>
+                    :class="tab === 'payments' ? 'text-black border-b-0 border-2 border-red-500 flex-none' :  'flex-1  border-b-2 border-b-red-500'">
+                    <a class="tab" @click="tab = 'payments'">Abonos</a>
                 </div>
                 <div class="flex-1 w-full border-b-2 border-b-red-500"></div>
             </div>
 
-            <div v-if="tab === 'cargos'"> <Cargos :id="id"/> </div>
-            <div v-if="tab === 'abonos'"> <Abonos :id="id"/> </div>
+            <div v-if="tab === 'charges'"> <Charges :id="id"/> </div>
+            <div v-if="tab === 'payments'"> <Payments :id="id"/> </div>
         </div>
     </div>
 
@@ -118,15 +118,15 @@
     import {
         toast
     } from 'vue3-toastify';
-    import Cargos from '../cargos/Index.vue'
-    import Abonos from '../abonos/Index.vue'
+    import Charges from '../charges/Index.vue'
+    import Payments from '../payments/Index.vue'
     import 'vue3-toastify/dist/index.css';
 
     const props = defineProps(['id'])
 
     const form = ref({})
     const loading = ref(false)
-    const tab = ref('cargos')
+    const tab = ref('charges')
     const errors = ref({})
 
 

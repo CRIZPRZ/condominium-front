@@ -3,13 +3,13 @@ import { ref } from 'vue';
 import condominiumApi from '@/api/CondominiumApi';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css'; 
-import { useChargesStore } from '../../cargos/store/Charges';
+import { useChargesStore } from '../../charges/store/Charges';
 
 
-export const useAbonosStore = defineStore('Abonos', () => {
+export const usePaymentsStore = defineStore('Payments', () => {
     
 const storeCharge = useChargesStore()
-const abonos = ref([]) 
+const payments = ref([]) 
 const showModal = ref(false)
 const loading = ref(false)
 const action = ref('store')
@@ -19,7 +19,7 @@ const error = ref({
     description     : '',
     amount          : ''
 }) 
-const abono = ref({
+const payment = ref({
     date                : '',
     description         : '',
     amount              : '',
@@ -27,15 +27,15 @@ const abono = ref({
     property_id         : '',
 })
 
-const getAbonos = async id => {
+const getPayments = async id => {
 
-    const { data: { data } } = await condominiumApi.get(`abonos`,{
+    const { data: { data } } = await condominiumApi.get(`payments`,{
         params: {
             property_id: id
         }
     })
 
-        abonos.value = data
+        payment.value = data
 
 }
 
@@ -47,9 +47,9 @@ const save = async () => {
         error.value = {}
     
         
-        await condominiumApi.post('abonos', abono.value)
+        await condominiumApi.post('payments', payment.value)
 
-            getAbonos()
+            getPayments()
             storeCharge.getCharges()
             cancel()
             toast.success('Abono creado !!', {
@@ -78,9 +78,9 @@ const edit = async () => {
         error.value = {}
     
         
-        await condominiumApi.put(`abonos/${abono.value.id}`, abono.value)
+        await condominiumApi.put(`payments/${payment.value.id}`, payment.value)
      
-            getAbonos()
+            getPayments()
             cancel()
             toast.success('Abono Actualizado !!', {
                 transition: toast.TRANSITIONS.ZOOM,
@@ -103,7 +103,7 @@ const edit = async () => {
 const cancel = () => {
     loading.value = false
     action.value = 'store'
-    abono.value = {
+    payment.value = {
         date                : '',
         description         : '',
         amount              : '',
@@ -116,12 +116,12 @@ const cancel = () => {
 
     return {
         showModal,
-        abono,
-        abonos,
+        payment,
+        payments,
         error,
         action,
         save,
-        getAbonos,
+        getPayments,
         cancel,
         edit
     }

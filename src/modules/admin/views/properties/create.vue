@@ -111,7 +111,7 @@ const save = async () => {
     } catch (error) {
 
         let errorResponse = error.response.data.errors
-        console.log(errorResponse);
+      
         loading.value = false
         for (const field in errorResponse) {
           errors.value[field] = errorResponse[field][0]

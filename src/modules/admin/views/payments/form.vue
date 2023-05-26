@@ -10,7 +10,7 @@
                 <label class="label">
                     <span class="label-text">Fecha </span> 
                 </label>
-                <input v-model="store.abono.date" type="date" class="input input-bordered border focus:outline-none w-full " />
+                <input v-model="store.payment.date" type="date" class="input input-bordered border focus:outline-none w-full " />
                 <small class="text-red-500" v-if="store.error.date">{{ store.error.date }}</small>
             </div>
 
@@ -18,7 +18,7 @@
                 <label class="label">
                     <span class="label-text">Monto </span> 
                 </label>
-                <input v-model="store.abono.amount" type="text" class="input input-bordered border focus:outline-none w-full " />
+                <input v-model="store.payment.amount" type="text" class="input input-bordered border focus:outline-none w-full " />
                 <small class="text-red-500" v-if="store.error.amount">{{ store.error.amount }}</small>
             </div>
 
@@ -26,7 +26,7 @@
                 <label class="label">
                     <span class="label-text">Descripcion </span> 
                 </label>
-                <textarea v-model="store.abono.description" class="input input-bordered border focus:outline-none w-full " rows="10"></textarea>
+                <textarea v-model="store.payment.description" class="input input-bordered border focus:outline-none w-full " rows="10"></textarea>
                 <small class="text-red-500" v-if="store.error.description">{{ store.error.description }}</small>
             </div>
             
@@ -68,8 +68,8 @@
 
 <script setup>
 
-import { useAbonosStore } from './store/Abonos';
+import { usePaymentsStore } from './store/Payments';
  
-const store = useAbonosStore()
+const store = usePaymentsStore()
  
 </script>
